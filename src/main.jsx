@@ -14,6 +14,7 @@ import ContactDetail from "./components/Contact/ContactDetail";
 import AddressCreate from "./components/Address/AddressCreate";
 import AddressEdit from "./components/Address/AddressEdit";
 import "./index.css";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -24,22 +25,24 @@ createRoot(document.getElementById("root")).render(
           <Route path='/login' element={<UserLogin />}></Route>
         </Route>
 
-        <Route path='/dashboard' element={<DashboardLayout />}>
-          <Route path='users'>
-            <Route path='profile' element={<UserProfile />} />
-            <Route path='logout' element={<UserLogout />} />
-          </Route>
+        <Route element={<ProtectedRoute />}>
+          <Route path='/dashboard' element={<DashboardLayout />}>
+            <Route path='users'>
+              <Route path='profile' element={<UserProfile />} />
+              <Route path='logout' element={<UserLogout />} />
+            </Route>
 
-          <Route path='contacts'>
-            <Route index element={<ContactList />} />
-            <Route path='create' element={<ContactCreate />} />
+            <Route path='contacts'>
+              <Route index element={<ContactList />} />
+              <Route path='create' element={<ContactCreate />} />
 
-            <Route path=':id'>
-              <Route index element={<ContactDetail />} />
-              <Route path='edit' element={<ContactEdit />} />
-              <Route path='addresses'>
-                <Route path='create' element={<AddressCreate />} />
-                <Route path=':addressId/edit' element={<AddressEdit />} />
+              <Route path=':id'>
+                <Route index element={<ContactDetail />} />
+                <Route path='edit' element={<ContactEdit />} />
+                <Route path='addresses'>
+                  <Route path='create' element={<AddressCreate />} />
+                  <Route path=':addressId/edit' element={<AddressEdit />} />
+                </Route>
               </Route>
             </Route>
           </Route>
