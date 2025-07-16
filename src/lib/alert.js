@@ -28,14 +28,3 @@ export const alertConfirm = async (message) => {
     });
     return result.isConfirmed;
 }
-
-export const alertLoginFirst = async (message) => {
-    const result = await swal.fire({
-        icon: "warning",
-        title: "Dont have access",
-        text: message,
-        confirmButtonColor: "#d33",
-        confirmButtonText: "Yes"
-    });
-    return result.isConfirmed;
-}
