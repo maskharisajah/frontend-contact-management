@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useParams } from "react-router";
 import { useEffectOnce, useLocalStorage } from "react-use";
 import { contactDetail, contactUpdate } from "../../lib/api/ContactApi";
 import { alertSuccess } from "../../lib/alert";
+import { InputWithLabel } from "../Reusable/Input/Index";
 
 function ContactEdit() {
   const [first_name, setFirstName] = useState("");
@@ -67,99 +68,56 @@ function ContactEdit() {
           <div className='p-8'>
             <form onSubmit={handleSubmit}>
               <div className='grid grid-cols-1 md:grid-cols-2 gap-5 mb-5'>
-                <div>
-                  <label
-                    htmlFor='first_name'
-                    className='block text-gray-300 text-sm font-medium mb-2'
-                  >
-                    First Name
-                  </label>
-                  <div className='relative'>
-                    <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
-                      <i className='fas fa-user-tag text-gray-500' />
-                    </div>
-                    <input
-                      type='text'
-                      id='first_name'
-                      name='first_name'
-                      className='w-full pl-10 pr-3 py-3 bg-gray-700 bg-opacity-50 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200'
-                      placeholder='Enter first name'
-                      required
-                      value={first_name}
-                      onChange={(e) => setFirstName(e.target.value)}
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label
-                    htmlFor='last_name'
-                    className='block text-gray-300 text-sm font-medium mb-2'
-                  >
-                    Last Name
-                  </label>
-                  <div className='relative'>
-                    <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
-                      <i className='fas fa-user-tag text-gray-500' />
-                    </div>
-                    <input
-                      type='text'
-                      id='last_name'
-                      name='last_name'
-                      className='w-full pl-10 pr-3 py-3 bg-gray-700 bg-opacity-50 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200'
-                      placeholder='Enter last name'
-                      required
-                      value={last_name}
-                      onChange={(e) => setLastName(e.target.value)}
-                    />
-                  </div>
-                </div>
+                <InputWithLabel
+                  label='First Name'
+                  type='text'
+                  id='first_name'
+                  name='first_name'
+                  iconclass='fas fa-user-tag'
+                  placeholder='Enter first name'
+                  required
+                  value={first_name}
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+                <InputWithLabel
+                  label='Last Name'
+                  type='text'
+                  id='last_name'
+                  name='last_name'
+                  iconclass='fas fa-user-tag'
+                  placeholder='Enter last name'
+                  required
+                  value={last_name}
+                  onChange={(e) => setLastName(e.target.value)}
+                />
               </div>
-              <div className='mb-5'>
-                <label
-                  htmlFor='email'
-                  className='block text-gray-300 text-sm font-medium mb-2'
-                >
-                  Email
-                </label>
-                <div className='relative'>
-                  <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
-                    <i className='fas fa-envelope text-gray-500' />
-                  </div>
-                  <input
-                    type='email'
-                    id='email'
-                    name='email'
-                    className='w-full pl-10 pr-3 py-3 bg-gray-700 bg-opacity-50 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200'
-                    placeholder='Enter email address'
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </div>
-              </div>
-              <div className='mb-6'>
-                <label
-                  htmlFor='phone'
-                  className='block text-gray-300 text-sm font-medium mb-2'
-                >
-                  Phone
-                </label>
-                <div className='relative'>
-                  <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
-                    <i className='fas fa-phone text-gray-500' />
-                  </div>
-                  <input
-                    type='tel'
-                    id='phone'
-                    name='phone'
-                    className='w-full pl-10 pr-3 py-3 bg-gray-700 bg-opacity-50 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200'
-                    placeholder='Enter phone number'
-                    required
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                  />
-                </div>
-              </div>
+
+              <InputWithLabel
+                label='Email'
+                type='email'
+                id='email'
+                name='email'
+                iconclass='fas fa-envelope'
+                placeholder='Enter email address'
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <div className='mb-5' />
+
+              <InputWithLabel
+                label='Phone'
+                type='tel'
+                id='phone'
+                name='phone'
+                iconclass='fas fa-phone'
+                placeholder='Enter phone number'
+                required
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
+              <div className='mb-5' />
+
               <div className='flex justify-end space-x-4'>
                 <Link
                   to='/dashboard/contacts'
