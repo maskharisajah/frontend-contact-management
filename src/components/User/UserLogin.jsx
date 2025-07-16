@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router";
 import { userLogin } from "../../lib/api/UserApi";
 import { alertError } from "../../lib/alert";
 import { useLocalStorage } from "react-use";
+import { InputWithLabel } from "../Reusable/Input/Index";
 
 function UserLogin() {
   const [username, setUsername] = useState("");
@@ -40,52 +41,33 @@ function UserLogin() {
           <p className='text-gray-300 mt-2'>Sign in to your account</p>
         </div>
         <form onSubmit={handleSubmit}>
-          <div className='mb-5'>
-            <label
-              htmlFor='username'
-              className='block text-gray-300 text-sm font-medium mb-2'
-            >
-              Username
-            </label>
-            <div className='relative'>
-              <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
-                <i className='fas fa-user text-gray-500' />
-              </div>
-              <input
-                type='text'
-                id='username'
-                name='username'
-                className='w-full pl-10 pr-3 py-3 bg-gray-700 bg-opacity-50 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200'
-                placeholder='Enter your username'
-                required
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-            </div>
-          </div>
-          <div className='mb-6'>
-            <label
-              htmlFor='password'
-              className='block text-gray-300 text-sm font-medium mb-2'
-            >
-              Password
-            </label>
-            <div className='relative'>
-              <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
-                <i className='fas fa-lock text-gray-500' />
-              </div>
-              <input
-                type='password'
-                id='password'
-                name='password'
-                className='w-full pl-10 pr-3 py-3 bg-gray-700 bg-opacity-50 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200'
-                placeholder='Enter your password'
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-          </div>
+          <InputWithLabel
+            label='Username'
+            type='text'
+            id='username'
+            name='username'
+            iconclass='fas fa-user'
+            className='w-full pl-10 pr-3 py-3 bg-gray-700 bg-opacity-50 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200'
+            placeholder='Enter your username'
+            required
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <div className='mb-5' />
+
+          <InputWithLabel
+            label='Password'
+            type='password'
+            id='password'
+            name='password'
+            iconclass='fas fa-lock'
+            placeholder='Enter your password'
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <div className='mb-6' />
+
           <div className='mb-6'>
             <button
               type='submit'
