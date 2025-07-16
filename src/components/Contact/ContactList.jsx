@@ -4,9 +4,10 @@ import { contactDelete, contactList } from "../../lib/api/ContactApi";
 import { alertConfirm, alertError, alertSuccess } from "../../lib/alert";
 import { Link } from "react-router";
 import Pagination from "../Reusable/Pagination/Index";
-import CardContacts from "../Reusable/CardContacts/Index";
+
 import SearchContact from "../Reusable/SearchContact/Index";
 import { InputWithLabel } from "../Reusable/Input/Index";
+import CardContacts from "../Reusable/Card/CardContacts";
 
 function ContactList() {
   const [token, _] = useLocalStorage("token", "");
@@ -64,43 +65,6 @@ function ContactList() {
   useEffect(() => {
     fetchContacts().then(() => console.log("contact fetched"));
   }, [reload]);
-  //   const toggleButton = document.getElementById("toggleSearchForm");
-  //   const searchFormContent = document.getElementById("searchFormContent");
-  //   const toggleIcon = document.getElementById("toggleSearchIcon");
-
-  //   // Add transition for smooth animation
-  //   searchFormContent.style.transition =
-  //     "max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, margin 0.3s ease-in-out";
-  //   searchFormContent.style.overflow = "hidden";
-  //   searchFormContent.style.maxHeight = "0px";
-  //   searchFormContent.style.opacity = "0";
-  //   searchFormContent.style.marginTop = "0";
-
-  //   function toggleSearchForm() {
-  //     if (searchFormContent.style.maxHeight !== "0px") {
-  //       // Hide the form
-  //       searchFormContent.style.maxHeight = "0px";
-  //       searchFormContent.style.opacity = "0";
-  //       searchFormContent.style.marginTop = "0";
-  //       toggleIcon.classList.remove("fa-chevron-up");
-  //       toggleIcon.classList.add("fa-chevron-down");
-  //     } else {
-  //       // Show the form
-  //       searchFormContent.style.maxHeight =
-  //         searchFormContent.scrollHeight + "px";
-  //       searchFormContent.style.opacity = "1";
-  //       searchFormContent.style.marginTop = "1rem";
-  //       toggleIcon.classList.remove("fa-chevron-down");
-  //       toggleIcon.classList.add("fa-chevron-up");
-  //     }
-  //   }
-
-  //   toggleButton.addEventListener("click", toggleSearchForm);
-
-  //   return () => {
-  //     toggleButton.removeEventListener("click", toggleSearchForm);
-  //   };
-  // });
 
   return (
     <>
