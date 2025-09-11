@@ -23,6 +23,7 @@ createRoot(document.getElementById("root")).render(
         <Route Route element={<Layout />}>
           <Route path='/register' element={<UserRegister />}></Route>
           <Route path='/login' element={<UserLogin />}></Route>
+          <Route path='/' element={<Navigate to='/login' replace />} />
         </Route>
 
         <Route element={<ProtectedRoute />}>
